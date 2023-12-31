@@ -35,7 +35,7 @@ Pre-Installation requirements:
 
 ### Installation Guide
 *  In your terminal use the following commands:
-1. Clone the repo using `git clone git@github.com:JustSage/project-management.git`.
+1. Clone the repo using `git clone https://github.com/YonatanHen/Travel-Agency-Website.git`.
 2. Run the command `npm i | npm install` to install all dependencies.
 3. You may use `npm run dev` to run the development environment,or `npm run start` to run the production environment.
 4. The website can now be view from http://localhost:3000 or 3001.
@@ -161,5 +161,5 @@ Visit our website:
 Created by:
 [@Sagie Baram](https://github.com/JustSage)
 [@Ariel Turchinsky](https://github.com/ariel7590)
-[@Yehonatan Hen](https://github.com/YehonatanHen)
+[@Yonatan Hen](https://github.com/YehonatanHen)
 [@David Haron Zade](https://github.com/Dave-Sama)
