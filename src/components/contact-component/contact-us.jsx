@@ -98,7 +98,7 @@ class ContactUs extends Component {
 	render() {
 		return (
 			<>
-				<h1 className='contact-header' align='center'>
+				<h1 className='contact-header' style={{ textAlign: 'center' }}>
 					Contact us!
 				</h1>
 				<Form onSubmit={this.handleSubmit}>
