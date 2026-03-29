@@ -140,7 +140,7 @@ Homepage (+ Navbar):
 
 ![Homepage](./public/homepage.png)
 
-Packages page (shrinked version):
+Packages page (shrunk version):
 
 ![Packages](./public/packages.png)
 
@@ -153,5 +153,5 @@ Orders page:
 V1 Created by:
 [@Sagie Baram](https://github.com/JustSage)
 [@Ariel Turchinsky](https://github.com/ariel7590)
-[@Yehonatan Hen](https://github.com/YehonatanHen)
+[@Yehonatan Hen](https://github.com/YonatanHen)
 [@David Haron Zade](https://github.com/Dave-Sama)
