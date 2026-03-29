@@ -110,3 +110,5 @@ dist
 # Template file
 ./components/-----template-----.jsx
 project-management
+
+.claude/settings.local.json

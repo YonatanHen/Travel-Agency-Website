@@ -1,8 +1,15 @@
 const sgMail = require('@sendgrid/mail')
-const express = require('express')
-const router = new express.Router()
-const api_key =
-	'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'
+
+// Validate that required environment variables are set
+if (!process.env.SENDGRID_API_KEY) {
+  throw new Error('SENDGRID_API_KEY is not set in environment variables')
+}
+if (!process.env.FROM_EMAIL) {
+  throw new Error('FROM_EMAIL is not set in environment variables')
+}
+
+const api_key = process.env.SENDGRID_API_KEY
+const fromEmail = process.env.FROM_EMAIL
 sgMail.setApiKey(api_key)
 
 router.post('/send-email', async (req, res) => {
@@ -11,7 +18,7 @@ router.post('/send-email', async (req, res) => {
 	try {
 		const msg = {
 			to: email.email,
-			from: 'davech1228@gmail.com',
+			from: fromEmail,
 			subject: 'Register to PineApple Travels',
 			text: 'Thank you for registering to PineApple Travels!',
 		}
@@ -34,7 +41,7 @@ router.post('/send-email', async (req, res) => {
 	try {
 		const msg = {
 			to: email.email,
-			from: 'davech1228@gmail.com',
+			from: fromEmail,
 			subject: 'Register to PineApple Travels',
 			text: 'Thank you for registering to PineApple Travels!',
 		}
@@ -60,7 +67,7 @@ router.post('/send-email-to', async (req, res) => {
 	try {
 		const msg = {
 			to: email,
-			from: 'davech1228@gmail.com',
+			from: fromEmail,
 			subject: subject,
 			text: text,
 		}
@@ -82,7 +89,7 @@ router.post('/send-broadcast-email', async (req, res) => {
 	try {
 		msg = {
 			to: emails,
-			from: 'davech1228@gmail.com',
+			from: fromEmail,
 			subject: 'Broadcast Message!',
 			text: text,
 		}
