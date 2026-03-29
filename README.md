@@ -1,4 +1,4 @@
-# Pine Apple Travel Agency (Website)
+# PineApple Travel Agency (Website)
 > This repo includes the third sprint of software project management course.
 
 ## Table of contents
