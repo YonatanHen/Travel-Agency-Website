@@ -21,11 +21,6 @@ each functionality has it's own router which handles the http request and respon
 The frontend based on React.js. when new version is done, npm run build command run to make shrinked 
 static version of the frontend code which helps to deploy the website to Heroku via one and only port.
 
-## Status
-Project is: _in progress_.
-The branch master up to date according to the submission of Sprint #4.
-
-
 ## Setup
 
 ### Dependencies
@@ -155,10 +150,7 @@ Orders page:
 
 ## Contact
 
-Visit our website:
-[Pine Apple Travel Agency](https://pine-apple-travel-agency.herokuapp.com/ "Pine Apple Travel Agency")
-
-Created by:
+V1 Created by:
 [@Sagie Baram](https://github.com/JustSage)
 [@Ariel Turchinsky](https://github.com/ariel7590)
 [@Yehonatan Hen](https://github.com/YehonatanHen)
