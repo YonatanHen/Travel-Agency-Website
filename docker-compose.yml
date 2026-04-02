@@ -1,0 +1,122 @@
+version: '3.8'
+
+networks:
+  travel-network:
+    driver: bridge
+
+volumes:
+  mongo-user-data:
+  mongo-package-data:
+  mongo-order-data:
+  mongo-customer-data:
+  mongo-message-data:
+  mongo-admin-data:
+  rabbitmq-data:
+
+services:
+  # MongoDB instances per service
+  mongo-user:
+    image: mongo:6
+    container_name: mongo-user
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-user-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    command: mongod
+
+  mongo-package:
+    image: mongo:6
+    container_name: mongo-package
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-package-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  mongo-order:
+    image: mongo:6
+    container_name: mongo-order
+    restart: unless-stopped
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo-order-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  mongo-customer:
+    image: mongo:6
+    container_name: mongo-customer
+    restart: unless-stopped
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongo-customer-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  mongo-message:
+    image: mongo:6
+    container_name: mongo-message
+    restart: unless-stopped
+    ports:
+      - "27021:27017"
+    volumes:
+      - mongo-message-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  mongo-admin:
+    image: mongo:6
+    container_name: mongo-admin
+    restart: unless-stopped
+    ports:
+      - "27022:27017"
+    volumes:
+      - mongo-admin-data:/data/db
+    networks:
+      - travel-network
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  # RabbitMQ Message Queue
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - travel-network
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
