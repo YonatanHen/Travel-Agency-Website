@@ -43,7 +43,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-config/
+/config/
 
 # TypeScript v1 declaration files
 typings/
@@ -112,3 +112,28 @@ dist
 project-management
 
 .claude/settings.local.json
+# Services
+services/**/node_modules
+services/**/.env
+services/**/coverage
+services/**/logs
+services/**/build
+
+# Gateway
+gateway/node_modules
+gateway/.env
+
+# Frontend
+frontend/.env
+frontend/build/
+frontend/node_modules
+
+# K8s
+k8s/.local/
+k8s/secrets.auto.yaml
+
+# Shared
+shared/*/node_modules
+
+# Scripts
+scripts/*.log
