@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: message-service
+  namespace: travel-agency
+  labels:
+    app: message-service
+spec:
+  selector:
+    app: message-service
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      name: http

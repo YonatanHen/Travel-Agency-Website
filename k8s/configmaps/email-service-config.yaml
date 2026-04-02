@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: email-service-config
+  namespace: travel-agency
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  SERVICE_NAME: "email-service"
+  MONGODB_URL: "mongodb://email-service-mongodb.travel-agency.svc.cluster.local:27017"
+  DATABASE_NAME: "email-service_db"
+  RABBITMQ_URL: "amqp://admin:$(RABBITMQ_PASSWORD)@rabbitmq.travel-agency.svc.cluster.local:5672"
+  # Additional service-specific env vars can be added here

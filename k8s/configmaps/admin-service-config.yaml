@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: admin-service-config
+  namespace: travel-agency
+data:
+  NODE_ENV: "production"
+  PORT: "3000"
+  SERVICE_NAME: "admin-service"
+  MONGODB_URL: "mongodb://admin-service-mongodb.travel-agency.svc.cluster.local:27017"
+  DATABASE_NAME: "admin-service_db"
+  RABBITMQ_URL: "amqp://admin:$(RABBITMQ_PASSWORD)@rabbitmq.travel-agency.svc.cluster.local:5672"
+  # Additional service-specific env vars can be added here

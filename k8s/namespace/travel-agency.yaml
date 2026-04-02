@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: travel-agency
+  labels:
+    name: travel-agency
+    environment: development
