@@ -1,0 +1,5 @@
+{
+  "name": "@travel-agency/shared-errors",
+  "version": "1.0.0",
+  "main": "AppError.js"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@travel-agency/customer-service",
+  "version": "1.0.0",
+  "description": "Microservice for customer-service",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest --coverage",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.18",
+    "dotenv": "^16.0.0",
+    "amqplib": "^0.10.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.0.0",
+    "express-rate-limit": "^6.0.0",
+    "joi": "^17.6.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "@travel-agency/shared-errors": "file:../../shared/errors",
+    "@travel-agency/shared-config": "file:../../shared/config",
+    "nodemon": "^2.0.7",
+    "jest": "^26.6.0",
+    "supertest": "^6.1.3",
+    "@shelf/jest-mongodb": "^2.0.2",
+    "eslint": "^7.27.0",
+    "prettier": "^2.2.1"
+  }
+}
