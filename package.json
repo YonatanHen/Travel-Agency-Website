@@ -5,7 +5,6 @@
   "workspaces": [
     "services/*",
     "gateway",
-    "frontend",
     "shared/*"
   ],
   "scripts": {

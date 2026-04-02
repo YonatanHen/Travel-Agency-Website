@@ -123,11 +123,6 @@ services/**/build
 gateway/node_modules
 gateway/.env
 
-# Frontend
-frontend/.env
-frontend/build/
-frontend/node_modules
-
 # K8s
 k8s/.local/
 k8s/secrets.auto.yaml
