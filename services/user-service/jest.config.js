@@ -1,5 +1,4 @@
 module.exports = {
-  preset: '@shelf/jest-mongodb',
   testEnvironment: 'node',
   coverageDirectory: 'coverage',
   collectCoverage: true,

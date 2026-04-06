@@ -1,12 +1,37 @@
 const request = require('supertest')
 const app = require('../../src/app')
 const User = require('../../src/models/User')
+const { mongoose } = require('@travel-agency/shared-utils')
+const { MongoMemoryServer } = require('mongodb-memory-server')
 
-// @shelf/jest-mongodb preset automatically connects to an in-memory MongoDB.
-// Ensure indexes are created before tests run.
+let mongod
+
+// Use in-memory MongoDB for integration tests (more reliable than preset)
 beforeAll(async () => {
+  // Start in-memory MongoDB
+  mongod = await MongoMemoryServer.create()
+  const uri = mongod.getUri()
+
+  // Connect mongoose to in-memory DB
+  await mongoose.connect(uri)
+  console.log('[integration tests] Connected to in-memory MongoDB')
+
+  // Ensure indexes
   await User.init()
-  console.log('[integration tests] Indexes ensured on preset MongoDB')
+  console.log('[integration tests] Indexes ensured')
+})
+
+// Cleanup database after each test to ensure test isolation
+afterEach(async () => {
+  await User.deleteMany({})
+  console.log('[integration tests] User collection cleared')
+})
+
+// Cleanup after all tests
+afterAll(async () => {
+  await mongoose.disconnect()
+  await mongod.stop()
+  console.log('[integration tests] Cleanup complete')
 })
 
 describe('Authentication API Integration Tests', () => {
@@ -21,23 +46,16 @@ describe('Authentication API Integration Tests', () => {
 
   describe('POST /api/auth/sign-up', () => {
     it('should register a new user with status 201', async () => {
-      try {
-        const response = await request(app)
-          .post('/api/auth/sign-up')
-          .send(testUser)
-          .expect(201)
+      const response = await request(app)
+        .post('/api/auth/sign-up')
+        .send(testUser)
+        .expect(201)
 
-        expect(response.body).toHaveProperty('_id')
-        expect(response.body.username).toBe(testUser.username)
-        expect(response.body.email).toBe(testUser.email)
-        expect(response.body.role).toBe('Customer')
-        expect(response.body.password).toBeUndefined()
-      } catch (err) {
-        if (err.response) {
-          console.error('Sign-up failed with status', err.response.status, 'body:', err.response.body)
-        }
-        throw err
-      }
+      expect(response.body).toHaveProperty('_id')
+      expect(response.body.username).toBe(testUser.username)
+      expect(response.body.email).toBe(testUser.email)
+      expect(response.body.role).toBe('Customer')
+      expect(response.body.password).toBeUndefined()
     })
 
     it('should reject duplicate username with 409', async () => {
@@ -84,8 +102,8 @@ describe('Authentication API Integration Tests', () => {
   })
 
   describe('POST /api/auth/login', () => {
-    beforeAll(async () => {
-      // Ensure user exists before login tests
+    beforeEach(async () => {
+      // Ensure user exists before each login test
       await request(app)
         .post('/api/auth/sign-up')
         .send(testUser)
@@ -155,8 +173,13 @@ describe('Authentication API Integration Tests', () => {
   describe('GET /api/auth/me (protected)', () => {
     let token
 
-    beforeAll(async () => {
-      // Get a valid token
+    beforeEach(async () => {
+      // Ensure user exists and get a valid token before each test
+      await request(app)
+        .post('/api/auth/sign-up')
+        .send(testUser)
+        .expect(201)
+
       const response = await request(app)
         .post('/api/auth/login')
         .send({

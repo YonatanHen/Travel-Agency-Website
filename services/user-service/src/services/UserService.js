@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const Joi = require('joi')
 const { getAuthService } = require('../utils/auth')
-const { ConflictError, ValidationError, UnauthorizedError, NotFoundError, BadRequestError } = require('@travel-agency/shared-errors')
+const { ConflictError, BadRequestError, UnauthorizedError, NotFoundError } = require('@travel-agency/shared-errors')
 
 /**
  * UserService - Business logic for user management and authentication
@@ -103,7 +103,7 @@ class UserService {
    */
   async getUserById(userId) {
     if (!userId) {
-      throw new ValidationError('User ID is required')
+      throw new BadRequestError('User ID is required')
     }
 
     const user = await this.userRepository.findById(userId)
@@ -117,7 +117,7 @@ class UserService {
   /**
    * Validate registration data using Joi
    * @param {Object} data
-   * @throws {ValidationError}
+   * @throws {BadRequestError}
    */
   async validateRegistration(data) {
     const schema = Joi.object({
@@ -155,7 +155,7 @@ class UserService {
 
     const { error } = schema.validate(data)
     if (error) {
-      throw ValidationError(error.details[0].message)
+      throw BadRequestError(error.details[0].message)
     }
   }
 }
