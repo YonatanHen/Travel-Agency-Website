@@ -1,0 +1,8 @@
+{
+  "name": "@travel-agency/shared-repositories",
+  "version": "1.0.0",
+  "description": "Shared repository base classes and patterns",
+  "main": "BaseRepository.js",
+  "keywords": ["repository", "base", "crud", "mongodb"],
+  "license": "MIT"
+}

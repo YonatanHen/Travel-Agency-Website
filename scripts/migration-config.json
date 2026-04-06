@@ -1,0 +1,28 @@
+{
+  "source": {
+    "url": "mongodb://localhost:27017",
+    "dbName": "travel_agency"
+  },
+  "target": {
+    "user": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "user_service_db"
+    },
+    "package": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "package_service_db"
+    },
+    "order": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "order_service_db"
+    },
+    "customer": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "customer_service_db"
+    },
+    "message": {
+      "url": "mongodb://localhost:27017",
+      "dbName": "message_service_db"
+    }
+  }
+}

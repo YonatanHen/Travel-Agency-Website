@@ -19,11 +19,12 @@
     "helmet": "^7.0.0",
     "express-rate-limit": "^6.0.0",
     "joi": "^17.6.0",
-    "winston": "^3.8.2"
-  },
-  "devDependencies": {
+    "winston": "^3.8.2",
     "@travel-agency/shared-errors": "file:../../shared/errors",
     "@travel-agency/shared-config": "file:../../shared/config",
+    "@travel-agency/shared-repositories": "file:../../shared/repositories"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.7",
     "jest": "^26.6.0",
     "supertest": "^6.1.3",
