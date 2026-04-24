@@ -1,1 +1,18 @@
-{"mongoUri":"mongodb://127.0.0.1:63132/"}
+{
+  "mongodb": {
+    "url": "mongodb://127.0.0.1:55490/",
+    "database": "package_service_db"
+  },
+  "jwt": {
+    "secret": "CHANGE_IN_PRODUCTION_TO_RANDOM_64_CHAR_HEX",
+    "expiresIn": "24h",
+    "refreshExpiresIn": "7d"
+  },
+  "server": {
+    "port": 3002,
+    "cors": {
+      "origin": "*",
+      "credentials": false
+    }
+  }
+}
