@@ -10,8 +10,8 @@
 |-------|------|-------|--------|-----------|
 | 0 | **01** | Infrastructure Setup (K8s) | ⏳ | 3-4h |
 | 1 | **02** | Database Layer (Schemas & Repositories) | ⏳ | 4-6h |
-| 2 | **03** | User Service (Auth) | ⏳ | 6-8h |
-| 2 | **04** | Package Service | ⏳ | 5-7h |
+| 2 | **03** | User Service (Auth) | ✅ | 6-8h |
+| 2 | **04** | Package Service | 🔄 | 5-7h |
 | 2 | **05** | Order Service | ⏳ | 7-9h |
 | 2 | **06** | Customer Service | ⏳ | 5-6h |
 | 2 | **07** | Message Service | ⏳ | 4-5h |
@@ -99,7 +99,7 @@
 
 ### Backend Services (Phase 2)
 
-#### Plan 03: User Service (Authentication) ⏳
+#### Plan 03: User Service (Authentication) ✅
 **Extracted From**: `server/routers/user.js`
 
 **Endpoints**:
@@ -971,7 +971,7 @@ At project completion:
 
 ---
 
-**Next Step**: Start **Plan 01** - Infrastructure Setup.
+**Next Step**: Continue **Plan 04** - complete package-service integration tests and finalize docs, then move to Plan 05 (Order Service).
 
 Run: `mkdir -p .claude/plans && create plan 01` (or manually execute steps).
 

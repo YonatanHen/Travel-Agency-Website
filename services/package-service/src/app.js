@@ -8,6 +8,7 @@ const helmet = require('helmet')
 const rateLimit = require('express-rate-limit')
 const Config = require('@travel-agency/shared-config')
 const { AppError } = require('@travel-agency/shared-errors')
+const { mongoose } = require('@travel-agency/shared-utils')
 
 const database = require('./utils/database')
 const packageRouter = require('./routes/package.routes')
@@ -29,7 +30,9 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.get('/health', async (req, res) => {
-  const dbStatus = database.isConnected() ? 'connected' : 'disconnected'
+  const dbStatus = (database.isConnected() || mongoose.connection.readyState === 1)
+    ? 'connected'
+    : 'disconnected'
   const statusCode = dbStatus === 'connected' ? 200 : 503
 
   res.status(statusCode).json({
