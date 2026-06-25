@@ -12,7 +12,7 @@
 * [Contact](#contact)
 
 ## General info
-The given website by the end of the course will provide a platform for travelers
+The given website provides a platform for travelers
 to find their perfect resort location and book a trip using our services.
 The server side based on two parts which serving us in production and development environments respectively.
 The server side includes root file (Called app.js) in both enviroments. the app.js file forked to 
@@ -20,11 +20,6 @@ routers to make our code much modular and simplier, the division to routers base
 each functionality has it's own router which handles the http request and respondes in the server.
 The frontend based on React.js. when new version is done, npm run build command run to make shrinked 
 static version of the frontend code which helps to deploy the website to Heroku via one and only port.
-
-## Status
-Project is: _in progress_.
-The branch master up to date according to the submission of Sprint #4.
-
 
 ## Setup
 
